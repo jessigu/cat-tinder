@@ -6,21 +6,19 @@ import Cats from './components/Cats'
 import NewCat from './components/NewCat'
 
 class App extends Component {
-    constructor(props){
-		super(props)
-		this.state = {
+  constructor(props){
+	  super(props)
+	  this.state = {
 			cats: []
 		}
 	}
 
-	componentWillMount() {
-		getCats()
-		.then(APIcats => {
-			this.setState({
-				cats: APIcats
-			})
-		})
-	}
+  	componentWillMount() {
+  		getCats()
+  		.then(APIcats => {
+  			this.setState({ cats: APIcats })
+  		})
+  	}
 
     handleNewCat(newCatInfo) {
     	createCat(newCatInfo)
@@ -33,7 +31,6 @@ class App extends Component {
     }
 
     handleDelete(cat) {
-        console.log(cat);
         deleteCat(cat)
         .then(catGone => {
             // let updatedCats = this.state.cats.filter((cat) => cat.id !== id)
