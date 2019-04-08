@@ -18,7 +18,6 @@ let createCat = function(cat) {
 	})
 		.then((resp) => { //promise
 			let json = resp.json()
-			debugger
 			return json
 		})
 }

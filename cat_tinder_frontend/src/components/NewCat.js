@@ -13,14 +13,13 @@ class NewCat extends Component {
         }
     }
 
-    handleChange(e){
+    handleChange = (e) => {
         let { form } = this.state
         form[e.target.name] = e.target.value
         this.setState({ form: form })
     }
 
-    submitCat(e) {
-        e.preventDefault()  
+    submitCat = () => {
         this.props.addCat(this.state.form)
     }
 
@@ -29,13 +28,13 @@ class NewCat extends Component {
           <Container>
               <Row>
                   <Col xs={12}>
-                      <Form onSubmit={this.submitCat.bind(this)}>
+                      <Form>
                           <Form.Label id="name">Name</Form.Label>
                           <Form.Control
                               style={{width: '200px'}}
                               type="text"
                               name="name"
-                              onChange={this.handleChange.bind(this)}
+                              onChange={this.handleChange}
                               value={this.state.form.name}
                           />
                           <Form.Label id="age">Age</Form.Label>
@@ -43,7 +42,7 @@ class NewCat extends Component {
                               style={{width: '200px'}}
                               type="number"
                               name="age"
-                              onChange={this.handleChange.bind(this)}
+                              onChange={this.handleChange}
                               value={this.state.form.age}
                           />
                           <Form.Label id="enjoys">Enjoys</Form.Label>
@@ -51,10 +50,10 @@ class NewCat extends Component {
                               style={{width: '200px'}}
                               type="text"
                               name="enjoys"
-                              onChange={this.handleChange.bind(this)}
+                              onChange={this.handleChange}
                               value={this.state.form.enjoys}
                           /><br/>
-                          <Button variant="btn btn-outline-success" type="submit" id="submit">Create Cat Profile</Button>
+                          <Button onClick={this.submitCat} variant="btn btn-outline-success" type="submit" id="submit">Create Cat Profile</Button>
                       </Form>
                   </Col>
               </Row>

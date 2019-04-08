@@ -20,27 +20,24 @@ class App extends Component {
   		})
   	}
 
-    handleNewCat(newCatInfo) {
+    handleNewCat = (newCatInfo) => {
     	createCat(newCatInfo)
         .then(successCat => {
             console.log("SUCCESS! New cat: ", successCat);
-            // this.setState({
-            //     cats: successCat
-            // })
+            const { cats } = this.state
+            cats.push(successCat)
+            this.setState({ cats: cats })
         })
     }
 
-    handleDelete(cat) {
+    handleDelete = (cat) => {
         deleteCat(cat)
         .then(catGone => {
-            // let updatedCats = this.state.cats.filter((cat) => cat.id !== id)
-            // this.setState({ cats: updatedCats })
             console.log("Cat gone. Goodbye ", catGone);
+            const  { cats } = this.state
+            cats.splice(catGone, 1)
+            this.setState({ cats: cats })
         })
-        // let updatedCats = this.state.cats.filter((cat) => cat.id !== id)
-        // this.setState({
-        //   cats: updatedCats
-        // })
     }
 
     render() {
@@ -48,8 +45,8 @@ class App extends Component {
         return (
         	<div>
         		<Header />
-        		<Cats cats={cats} handleDelete={this.handleDelete.bind(this)}/>
-        		<NewCat addCat={this.handleNewCat.bind(this)}/>
+        		<Cats cats={cats} handleDelete={this.handleDelete}/>
+        		<NewCat addCat={this.handleNewCat}/>
         	</div>
         );
     }
