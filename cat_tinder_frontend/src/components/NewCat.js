@@ -19,7 +19,8 @@ class NewCat extends Component {
         this.setState({ form: form })
     }
 
-    submitCat() {
+    submitCat(e) {
+        e.preventDefault()  
         this.props.addCat(this.state.form)
     }
 
@@ -28,7 +29,7 @@ class NewCat extends Component {
           <Container>
               <Row>
                   <Col xs={12}>
-                      <Form>
+                      <Form onSubmit={this.submitCat.bind(this)}>
                           <Form.Label id="name">Name</Form.Label>
                           <Form.Control
                               style={{width: '200px'}}
@@ -53,7 +54,7 @@ class NewCat extends Component {
                               onChange={this.handleChange.bind(this)}
                               value={this.state.form.enjoys}
                           /><br/>
-                          <Button onClick={this.submitCat.bind(this)} variant="btn btn-outline-success" type="submit" id="submit">Create Cat Profile</Button>
+                          <Button variant="btn btn-outline-success" type="submit" id="submit">Create Cat Profile</Button>
                       </Form>
                   </Col>
               </Row>

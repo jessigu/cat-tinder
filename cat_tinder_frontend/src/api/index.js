@@ -11,13 +11,14 @@ let getCats = function() {
 let createCat = function(cat) {
 	return fetch(BASE + '/cats', {
 		body: JSON.stringify(cat),  //stringify the json for fetch
-		headers: {  //sending JSON, expect JSON back
+		headers: {  //sending JSON, expect JSON back; info about the content
 			'Content-Type': 'application/json'
 		},
 		method: "POST"  //correct endpoint invoked on server
 	})
-		.then((resp) => {
+		.then((resp) => { //promise
 			let json = resp.json()
+			debugger
 			return json
 		})
 }

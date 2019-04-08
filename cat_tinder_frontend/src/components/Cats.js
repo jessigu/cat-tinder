@@ -11,7 +11,7 @@ class Cats extends Component {
                         {this.props.cats.map((cat) => {
                             return (
                                 <ListGroupItem key={cat.id}>
-                                    <h4>
+                                    <h4> 
                                       <span className='cat-name'>
                                         {cat.name}
                                       </span> - <small className='cat-age'>age {cat.age}</small>
