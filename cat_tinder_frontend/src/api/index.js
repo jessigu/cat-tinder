@@ -1,6 +1,6 @@
 const BASE = 'http://localhost:3000'
 
-let getCats = function() {
+let getCats = () => {
 	return fetch(BASE + '/cats')
 		.then((resp) => {
 			let json = resp.json()
@@ -8,7 +8,7 @@ let getCats = function() {
 		})
 }
 
-let createCat = function(cat) {
+let createCat = (cat) => {
 	return fetch(BASE + '/cats', {
 		body: JSON.stringify(cat),  //stringify the json for fetch
 		headers: {  //sending JSON, expect JSON back; info about the content
@@ -22,7 +22,7 @@ let createCat = function(cat) {
 		})
 }
 
-let deleteCat = function(cat) {
+let deleteCat = (cat) => {
 	return fetch(`${BASE}/cats/${cat.id}`, {
 		body: JSON.stringify(cat),
 		headers: {

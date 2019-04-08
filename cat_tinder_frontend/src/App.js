@@ -13,7 +13,7 @@ class App extends Component {
 		}
 	}
 
-  	componentWillMount() {
+  	componentWillMount = () => {
   		getCats()
   		.then(APIcats => {
   			this.setState({ cats: APIcats })
@@ -34,8 +34,11 @@ class App extends Component {
         deleteCat(cat)
         .then(catGone => {
             console.log("Cat gone. Goodbye ", catGone);
-            const  { cats } = this.state
-            cats.splice(catGone, 1)
+            let { cats } = this.state
+            //this is removing teh last one
+            cats.splice(cats.indexOf(cat), 1)
+            // debugger
+            // let updateCats = cats.filter(cat => catGone !== cat);
             this.setState({ cats: cats })
         })
     }
