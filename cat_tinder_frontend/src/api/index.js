@@ -2,10 +2,14 @@ const BASE = 'http://localhost:3000'
 
 let getCats = () => {
 	return fetch(BASE + '/cats')
-		.then((resp) => {
-			let json = resp.json()
-			return json
-		})
+	.then((resp) => { //promise
+		if (resp.status === 200 ) {
+			return resp.json()
+		} else {
+			throw 'unable to view. try again'
+		}
+	})
+	.catch(e=> alert(e))
 }
 
 let createCat = (cat) => {
@@ -17,23 +21,30 @@ let createCat = (cat) => {
 		method: "POST"  //correct endpoint invoked on server
 	})
 		.then((resp) => { //promise
-			let json = resp.json()
-			return json
+			if (resp.status === 200 ) {
+				return resp.json()
+			} else {
+				throw 'unable to create. try again'
+			}
 		})
+		.catch(e=> alert(e))
 }
 
-let deleteCat = (cat) => {
-	return fetch(`${BASE}/cats/${cat.id}`, {
-		body: JSON.stringify(cat),
+let deleteCat = (id) => {
+	return fetch(`${BASE}/cats/${id}`, {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		method: "Delete"
+		method: "DELETE"
 	})
-		.then((resp) => {
-			let json = resp.json()
-			return json
-		})
+	.then((resp) => { //promise
+		if (resp.status === 200 ) {
+			return resp.json()
+		} else {
+			throw 'unable to delete. try again'
+		}
+	})
+	.catch(e=> alert(e))
 }
 
 export  {

@@ -2,5 +2,10 @@ This was a pair programming project to integrate a Rails backend framework with 
 
 Testing completed in Jest & Enzyme for React.
 Validation testing for Rails model in rspec.
-Ability to CRD complete. Update feature will be included in future updates.
+Ability to CRD complete.
 Used React Bootstrap.
+
+Todo:
+- Update feature
+- Cat component
+- Modal for each cat

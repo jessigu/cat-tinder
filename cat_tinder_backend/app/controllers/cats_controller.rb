@@ -17,8 +17,9 @@ class CatsController < ApplicationController
         cat = Cat.find(params[:id])
         cat.destroy
         render json: cat
-
     end
+
+    private
 
     def cat_params
         params.require(:cat).permit(:name, :age, :enjoys)

@@ -14,7 +14,7 @@ class NewCat extends Component {
     }
 
     handleChange = (e) => {
-        let { form } = this.state
+        const { form } = this.state
         form[e.target.name] = e.target.value
         this.setState({ form: form })
     }
@@ -53,7 +53,7 @@ class NewCat extends Component {
                               onChange={this.handleChange}
                               value={this.state.form.enjoys}
                           /><br/>
-                          <Button onClick={this.submitCat} variant="btn btn-outline-success" type="submit" id="submit">Create Cat Profile</Button>
+                          <Button onClick={this.submitCat} variant="btn btn-outline-success" id="submit">Create Cat Profile</Button>
                       </Form>
                   </Col>
               </Row>

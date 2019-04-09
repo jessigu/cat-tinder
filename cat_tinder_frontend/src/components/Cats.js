@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Container, Row, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
+import { Col, Container, Row, ListGroup } from 'react-bootstrap'
+import Cat from './Cat'
 
 class Cats extends Component {
+
   render() {
     return (
     	<Container>
@@ -10,18 +12,11 @@ class Cats extends Component {
                     <ListGroup>
                         {this.props.cats.map((cat) => {
                             return (
-                                <ListGroupItem key={cat.id}>
-                                    <h4>
-                                      <span className='cat-name'>
-                                        {cat.name}
-                                      </span> - <small className='cat-age'>age {cat.age}</small>
-                                    </h4>
-
-                                    <span className='cat-enjoys'>
-                                      {cat.name} enjoys {cat.enjoys}
-                                    </span><br/><br/>
-                                    <Button variant="btn btn-sm btn-outline-danger" onClick={() => this.props.handleDelete(cat)}>Delete</Button>
-                                </ListGroupItem>
+                              < Cat
+                              cat={cat}
+                              key={cat.id}
+                              handleDelete={this.props.handleDelete}
+                              />
                             )
                         })}
                     </ListGroup>

@@ -14,11 +14,15 @@ class App extends Component {
 	}
 
   	componentWillMount = () => {
-  		getCats()
-  		.then(APIcats => {
-  			this.setState({ cats: APIcats })
-  		})
+      this.showCats()
   	}
+
+    showCats = () => {
+      getCats()
+      .then(APIcats => {
+        this.setState({ cats: APIcats })
+      })
+    }
 
     handleNewCat = (newCatInfo) => {
     	createCat(newCatInfo)
@@ -30,16 +34,11 @@ class App extends Component {
         })
     }
 
-    handleDelete = (cat) => {
-        deleteCat(cat)
+    handleDelete = (id) => {
+        deleteCat(id)
         .then(catGone => {
             console.log("Cat gone. Goodbye ", catGone);
-            let { cats } = this.state
-            //this is removing teh last one
-            cats.splice(cats.indexOf(cat), 1)
-            // debugger
-            // let updateCats = cats.filter(cat => catGone !== cat);
-            this.setState({ cats: cats })
+            this.showCats()
         })
     }
 
