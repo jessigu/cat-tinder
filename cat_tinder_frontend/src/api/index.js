@@ -48,13 +48,13 @@ let deleteCat = (id) => {
 }
 
 export  {
-	getCats
+	getCats, createCat, deleteCat
 }
-
-export  {
-	createCat
-}
-
-export  {
-	deleteCat
-}
+//
+// export  {
+// 	createCat
+// }
+//
+// export  {
+// 	deleteCat
+// }

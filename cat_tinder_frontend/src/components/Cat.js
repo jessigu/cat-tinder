@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { Button, ListGroupItem } from 'react-bootstrap'
-// import { deleteCat } from '.././api'
+import { Modal, Button, ListGroupItem } from 'react-bootstrap'
 
 class Cat extends Component {
-  // handleDelete = (cat) => {
-  //     deleteCat(cat)
-  //     .then(catGone => {
-  //         console.log("Cat gone. Goodbye ", catGone);
-  //         let { cats } = this.state
-  //         cats.splice(cats.indexOf(cat), 1)
-  //         // debugger
-  //         // let updateCats = cats.filter(cat => catGone !== cat);
-  //         this.setState({ cats: cats })
-  //     })
-  // }
+  constructor(props){
+	  super(props)
+	  this.state = {
+			show: false
+		}
+	}
+
+  handleClose = () => {
+    this.setState({ show: false });
+  }
+
+  handleShow = () => {
+    this.setState({ show: true });
+  }
 
   render() {
     let { cat } = this.props
@@ -29,12 +31,32 @@ class Cat extends Component {
             <span className='cat-enjoys'>
               {cat.name} enjoys {cat.enjoys}
             </span>
-            <br/>
-            <br/>
             <Button
-              variant="btn btn-sm btn-outline-danger"
-              onClick={() => this.props.handleDelete(cat.id)}>Delete {cat.name}
-            </Button>
+              style={{float: 'right'}}
+              variant="btn btn-sm btn-outline-success"
+              onClick={this.handleShow}>See More</Button>
+
+              <Modal show={this.state.show} onHide={this.handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>{cat.name}</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                  <p>Age: {cat.age}</p>
+                  <p>{cat.name} enjoys {cat.enjoys}.</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                  <Button
+                    variant="btn btn-sm btn-outline-danger"
+                    style={{float: 'left'}}
+                    onClick={() => this.props.handleDelete(cat.id)}>Delete {cat.name}
+                  </Button>
+                  <Button
+                  variant="btn btn-sm btn-outline-success" onClick={this.handleClose}>Save Changes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
           </ListGroupItem>
       	</div>
     );

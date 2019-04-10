@@ -10,7 +10,9 @@ class Cats extends Component {
             <Row>
                 <Col xs={12}>
                     <ListGroup>
-                        {this.props.cats.map((cat) => {
+                        {this.props.cats
+                          .sort((a, b) => a.id < b.id)
+                          .map((cat) => {
                             return (
                               < Cat
                               cat={cat}
