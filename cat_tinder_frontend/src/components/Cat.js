@@ -34,7 +34,8 @@ class Cat extends Component {
             <Button
               style={{float: 'right'}}
               variant="btn btn-sm btn-outline-success"
-              onClick={this.handleShow}>See More</Button>
+              onClick={this.handleShow}>See More
+            </Button>
 
               <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
@@ -48,12 +49,14 @@ class Cat extends Component {
 
                 <Modal.Footer>
                   <Button
-                    variant="btn btn-sm btn-outline-danger"
+                    variant="btn btn-sm btn-outline-warning"
                     style={{float: 'left'}}
                     onClick={() => this.props.handleDelete(cat.id)}>Delete {cat.name}
                   </Button>
                   <Button
-                  variant="btn btn-sm btn-outline-success" onClick={this.handleClose}>Save Changes
+                  variant="btn btn-sm btn-outline-success"
+                  style={{float: 'right'}}
+                  onClick={this.handleClose}>Save Changes
                   </Button>
                 </Modal.Footer>
               </Modal>

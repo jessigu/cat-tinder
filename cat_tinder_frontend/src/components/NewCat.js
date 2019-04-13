@@ -29,7 +29,6 @@ class NewCat extends Component {
               <Row>
                   <Col xs={12}>
                       <Form>
-                          <Form.Label id="name">Name</Form.Label>
                           <Form.Control
                               style={{width: '200px'}}
                               type="text"
@@ -37,7 +36,7 @@ class NewCat extends Component {
                               onChange={this.handleChange}
                               value={this.state.form.name}
                           />
-                          <Form.Label id="age">Age</Form.Label>
+                          <Form.Label id="name">Name</Form.Label>
                           <Form.Control
                               style={{width: '200px'}}
                               type="number"
@@ -45,14 +44,16 @@ class NewCat extends Component {
                               onChange={this.handleChange}
                               value={this.state.form.age}
                           />
-                          <Form.Label id="enjoys">Enjoys</Form.Label>
+                          <Form.Label id="age">Age</Form.Label>
                           <Form.Control
                               style={{width: '200px'}}
                               type="text"
                               name="enjoys"
                               onChange={this.handleChange}
                               value={this.state.form.enjoys}
-                          /><br/>
+                          />
+                          <Form.Label id="enjoys">Enjoys</Form.Label>
+                          <br/>
                           <Button onClick={this.submitCat} variant="btn btn-outline-success" id="submit">Create Cat Profile</Button>
                       </Form>
                   </Col>

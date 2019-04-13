@@ -6,6 +6,7 @@ Ability to CRD complete.
 Used React Bootstrap.
 
 Todo:
-- Update feature
-- Cat component
-- Modal for each cat
+- Update
+- clear newcat form once entered
+- newcat - own page
+- cat - only model and cats list index?

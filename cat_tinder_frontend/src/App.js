@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
+//fetch methods
 import { getCats, createCat, deleteCat } from './api'
+
+//files
 import Header from './components/Header'
 import Cats from './components/Cats'
 import NewCat from './components/NewCat'
+
+//pages
+// import NotFound from './pages/NotFound'
+// import NewCat from './pages/NewCat'
+
 
 class App extends Component {
   constructor(props){
@@ -27,17 +37,15 @@ class App extends Component {
     handleNewCat = (newCatInfo) => {
     	createCat(newCatInfo)
         .then(successCat => {
-            console.log("SUCCESS! New cat: ", successCat);
-            const { cats } = this.state
-            cats.push(successCat)
-            this.setState({ cats: cats })
+            // console.log("SUCCESS! New cat: ", successCat);
+            this.showCats()
         })
     }
 
     handleDelete = (id) => {
         deleteCat(id)
         .then(catGone => {
-            console.log("Cat gone. Goodbye ", catGone);
+            // console.log("Cat gone. Goodbye ", catGone);
             this.showCats()
         })
     }
@@ -45,11 +53,11 @@ class App extends Component {
     render() {
         let { cats } = this.state
         return (
-        	<div>
-        		<Header />
-        		<Cats cats={cats} handleDelete={this.handleDelete}/>
-        		<NewCat addCat={this.handleNewCat}/>
-        	</div>
+          	<div>
+          		<Header />
+          		<Cats cats={cats} handleDelete={this.handleDelete}/>
+          		<NewCat addCat={this.handleNewCat}/>
+          	</div>
         );
     }
 }
